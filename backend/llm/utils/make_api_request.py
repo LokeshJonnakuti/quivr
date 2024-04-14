@@ -29,7 +29,7 @@ def get_api_call_response_as_text(
             params=search_params or None,
             headers=headers or None,
             data=json.dumps(params) or None,
-        )
+        timeout=60)
         return response.text
     except Exception as e:
         logger.error(f"Error calling API: {e}")
