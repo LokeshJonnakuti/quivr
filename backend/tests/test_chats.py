@@ -1,5 +1,5 @@
-import random
 import string
+import secrets
 
 
 def test_get_all_chats(client, api_key):
@@ -25,7 +25,7 @@ def test_get_all_chats(client, api_key):
 def test_create_chat_and_talk(client, api_key):
     # Make a POST request to chat with the default brain and a random chat name
     random_chat_name = "".join(
-        random.choices(string.ascii_letters + string.digits, k=10)
+        secrets.SystemRandom().choices(string.ascii_letters + string.digits, k=10)
     )
 
     brain_response = client.get(
@@ -82,7 +82,7 @@ def test_create_chat_and_talk(client, api_key):
 def test_create_chat_and_talk_with_no_brain(client, api_key):
     # Make a POST request to chat with no brain id and a random chat name
     random_chat_name = "".join(
-        random.choices(string.ascii_letters + string.digits, k=10)
+        secrets.SystemRandom().choices(string.ascii_letters + string.digits, k=10)
     )
 
     # Create a chat
