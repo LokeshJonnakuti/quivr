@@ -3,11 +3,10 @@ import re
 import tempfile
 import unicodedata
 from urllib.parse import urljoin
-
-import requests
 from bs4 import BeautifulSoup
 from newspaper import Article
 from pydantic import BaseModel
+from security import safe_requests
 
 
 class CrawlWebsite(BaseModel):
@@ -19,7 +18,7 @@ class CrawlWebsite(BaseModel):
 
     def _crawl(self, url):
         try:
-            response = requests.get(url)
+            response = safe_requests.get(url)
             if response.status_code == 200:
                 return response.text
             else:
