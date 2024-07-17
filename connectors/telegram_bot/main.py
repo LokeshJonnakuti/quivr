@@ -43,8 +43,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_message = update.message.text
     response = requests.post(
-        quivr_url, headers=headers, json={"question": user_message}
-    )
+        quivr_url, headers=headers, json={"question": user_message}, 
+    timeout=60)
     if response.status_code == 200:
         quivr_response = response.json().get(
             "assistant", "Sorry, I couldn't understand that."
