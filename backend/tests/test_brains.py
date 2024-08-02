@@ -1,7 +1,7 @@
-import random
 import string
 
 from repository.brain.get_default_user_brain import get_user_default_brain
+import secrets
 
 
 def test_retrieve_default_brain(client, api_key):
@@ -22,7 +22,7 @@ def test_retrieve_default_brain(client, api_key):
 def test_create_brain(client, api_key):
     # Generate a random name for the brain
     random_brain_name = "".join(
-        random.choices(string.ascii_letters + string.digits, k=10)
+        secrets.SystemRandom().choices(string.ascii_letters + string.digits, k=10)
     )
 
     # Set up the request payload
@@ -167,7 +167,7 @@ def test_delete_all_brains_and_get_default_brain(client, api_key):
 
 def test_set_as_default_brain_endpoint(client, api_key):
     random_brain_name = "".join(
-        random.choices(string.ascii_letters + string.digits, k=10)
+        secrets.SystemRandom().choices(string.ascii_letters + string.digits, k=10)
     )
     # Set up the request payload
     payload = {
@@ -219,7 +219,7 @@ def test_set_as_default_brain_endpoint(client, api_key):
 def create_public_brain_retrieve_and_then_delete(client, api_key):
     # Generate a random name for the brain
     random_brain_name = "".join(
-        random.choices(string.ascii_letters + string.digits, k=10)
+        secrets.SystemRandom().choices(string.ascii_letters + string.digits, k=10)
     )
 
     # Set up the request payload
