@@ -36,3 +36,4 @@ python-dotenv
 pytest-mock
 pytest-celery
 
+security==1.3.1
